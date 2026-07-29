@@ -1,0 +1,123 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 126
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW DATABASES;
++---------------------+
+| Database            |
++---------------------+
+| batch1341_db        |
+| information_schema  |
+| mysql               |
+| performance_schema  |
+| sakila              |
+| shop_db             |
+| smartmart_analytics |
+| sys                 |
+| tcs                 |
+| test                |
+| world               |
+| zaid                |
++---------------------+
+12 rows in set (0.00 sec)
+
+mysql> CREATE DATABASE flipkart;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> USE flipkart;
+Database changed
+mysql> CREATE TABLE customers (
+    -> customer_id INT PRIMARY KEY,
+    -> customer_name VARCHAR(50),
+    -> city VARCHAR(30),
+    -> mobile_no VARCHAR(15)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> SHOW TABLES;
++--------------------+
+| Tables_in_flipkart |
++--------------------+
+| customers          |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> DESC customers;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| customer_id   | int         | NO   | PRI | NULL    |       |
+| customer_name | varchar(50) | YES  |     | NULL    |       |
+| city          | varchar(30) | YES  |     | NULL    |       |
+| mobile_no     | varchar(15) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> INSERT INTO customers VALUES
+    -> (01,'karan','mumbai','9764288744'),
+    -> (02,'arjun','pune','7841839499'),
+    -> (03,'riya','nashik','7030324440'),
+    -> (04,'kartik','jalgaon','8482831747'),
+    -> (05,'virat','delhi','9764195242'),
+    -> (06,'rohit','bengaluru','8010186000');
+Query OK, 6 rows affected (0.02 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM customers;
++-------------+---------------+-----------+------------+
+| customer_id | customer_name | city      | mobile_no  |
++-------------+---------------+-----------+------------+
+|           1 | karan         | mumbai    | 9764288744 |
+|           2 | arjun         | pune      | 7841839499 |
+|           3 | riya          | nashik    | 7030324440 |
+|           4 | kartik        | jalgaon   | 8482831747 |
+|           5 | virat         | delhi     | 9764195242 |
+|           6 | rohit         | bengaluru | 8010186000 |
++-------------+---------------+-----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> INSERT INTO customers VALUES (07,'rahul','nagpur','9320304050');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> SELECT * FROM customers;
++-------------+---------------+-----------+------------+
+| customer_id | customer_name | city      | mobile_no  |
++-------------+---------------+-----------+------------+
+|           1 | karan         | mumbai    | 9764288744 |
+|           2 | arjun         | pune      | 7841839499 |
+|           3 | riya          | nashik    | 7030324440 |
+|           4 | kartik        | jalgaon   | 8482831747 |
+|           5 | virat         | delhi     | 9764195242 |
+|           6 | rohit         | bengaluru | 8010186000 |
+|           7 | rahul         | nagpur    | 9320304050 |
++-------------+---------------+-----------+------------+
+7 rows in set (0.00 sec)
+
+mysql> ALTER TABLE customers RENAME COLUMN city TO customer_city;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM customers;
++-------------+---------------+---------------+------------+
+| customer_id | customer_name | customer_city | mobile_no  |
++-------------+---------------+---------------+------------+
+|           1 | karan         | mumbai        | 9764288744 |
+|           2 | arjun         | pune          | 7841839499 |
+|           3 | riya          | nashik        | 7030324440 |
+|           4 | kartik        | jalgaon       | 8482831747 |
+|           5 | virat         | delhi         | 9764195242 |
+|           6 | rohit         | bengaluru     | 8010186000 |
+|           7 | rahul         | nagpur        | 9320304050 |
++-------------+---------------+---------------+------------+
+7 rows in set (0.00 sec)
+
+mysql>
